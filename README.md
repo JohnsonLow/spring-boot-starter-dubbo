@@ -47,7 +47,7 @@ mvn clean install
 </plugin>
 ```
 ### 4. 服务接口
-```
+```java
 package com.lyf.samples.api;
 
 public interface HelloService {
