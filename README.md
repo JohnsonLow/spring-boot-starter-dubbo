@@ -7,7 +7,7 @@ spring-boot-start-dubbo，让你可以使用spring-boot的方式开发dubbo程�
 
 ### 1. clone 代码
 
-```
+```shell
 git clone git@github.com:JohnsonLow/spring-boot-starter-dubbo.git
 ```
 
@@ -22,7 +22,7 @@ mvn clean install
 ### 3. 修改maven配置文件(可以参考样例[spring-boot-starter-dubbo-sample](https://github.com/JohnsonLow/spring-boot-starter-dubbo-sample))
 
 ##### 在Spring Boot项目的pom.xml修改依赖的版本及编码:
-```
+```xml
 <properties>
     <java.version>1.7</java.version>
     <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
@@ -40,7 +40,7 @@ mvn clean install
 * starter-dubbo-server 依赖 starter-common 便于注册到zookeeper
 
 ##### maven插件用于打包成可执行的jar文件,添加以下插件(这里一定要加载需要打包成jar的mudule的pom中)
-```
+```xml
 <plugin>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-maven-plugin</artifactId>
@@ -61,7 +61,7 @@ public interface HelloService {
 
 根据实际情况依赖最新版本
 
-```
+```xml
  <dependency>
      <groupId>com.oqiji.springboot</groupId>
      <artifactId>starter-dubbo-server</artifactId>
@@ -70,7 +70,7 @@ public interface HelloService {
  ```
 
 在application.yml添加Dubbo的版本信息和客户端超时信息,如下:
-```
+```yml
 spring:
   dubbo:
     application:
@@ -90,7 +90,7 @@ debug: true
 > spring.dubbo.scan 为要扫描的包。也可使用@DubboScan进行配置
 
 * 编写你的Dubbo服务,只需要添加要发布的服务实现上添加 @Service ,如下
-```
+```java
   package com.lyf.ds;
   
   import com.alibaba.dubbo.config.annotation.Service;
@@ -117,7 +117,7 @@ debug: true
 ```
 
 * spring boot启动
-```
+```java
   package com.lyf.ds;
   
   import com.oqiji.boot.dubbo.DubboScan;
@@ -137,8 +137,8 @@ debug: true
 ```
 
 ### 6. 消费Dubbo服务
-* 在application.properties添加Dubbo的版本信息和客户端超时信息,如下:
-```
+* 在application.yml添加Dubbo的版本信息和客户端超时信息,如下:
+```yml
 spring:
   dubbo:
     application:
@@ -154,7 +154,7 @@ debug: true
 
 根据实际情况依赖最新版本
 
-```
+```xml
  <dependency>
     <groupId>com.oqiji.springboot</groupId>
     <artifactId>starter-dubbo-common</artifactId>
@@ -162,7 +162,7 @@ debug: true
  </dependency>
  ```
 * 引用Dubbo服务,只需要添加要发布的服务实现上添加 @Reference ,如下:
-```
+```java
   package com.lyf.dc;
   
   import com.alibaba.dubbo.config.annotation.Reference;
@@ -190,7 +190,7 @@ debug: true
 
 ```
 * spring boot启动
-```
+```java
   package com.lyf.dct;
   
   import com.lyf.dc.HelloServiceReq;
